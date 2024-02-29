@@ -9,8 +9,8 @@
 #' @export
 final.sample.interpolate <- function(x, grid.temp, plot.on = TRUE)
 {
-  require(ggplot2)
-  require(dplyr)
+  require(ggplot2,quietly = TRUE)
+  require(dplyr,quietly = TRUE)
   spline.fit <- smooth.spline(x$Temperature, x$dCp, cv = TRUE)
   interpolated.sample.pred <- predict(spline.fit, grid.temp)
   interpolated.sample <- data.frame(Temperature = grid.temp,

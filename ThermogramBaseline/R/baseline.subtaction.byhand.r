@@ -11,8 +11,8 @@
 
 baseline.subtraction.byhand <- function(x, lwr.temp, upr.temp, plot.on = TRUE)
 {
-  require(dplyr)
-  require(ggplot2)
+  require(dplyr,quietly = TRUE)
+  require(ggplot2,quietly = TRUE)
   ### check-conditions of boundaries - this effects automation
   if(lwr.temp < min(x$Temperature)+1) lwr.temp = lwr.temp + 1
   if(upr.temp > max(x$Temperature)-1) upr.temp = upr.temp - 1

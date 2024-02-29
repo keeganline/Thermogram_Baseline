@@ -16,8 +16,8 @@ auto.baseline <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80,
                           point = "outmost")
 {
   ### automate selection of endpoints
-  require(dplyr)
-  require(ggplot2)
+  require(dplyr, quietly = TRUE)
+  require(ggplot2,quietly = TRUE)
   endpoints <- endpoint.detection(
     x = x,
     w = w,

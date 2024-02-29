@@ -15,8 +15,8 @@
 #' @export
 endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "outmost")
 {
-  require(ggplot2)
-  require(dplyr)
+  require(ggplot2,quietly = TRUE)
+  require(dplyr,quietly = TRUE)
   if(point.selection == "outmost"){
     k <- w
   }
