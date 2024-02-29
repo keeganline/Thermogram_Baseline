@@ -1,6 +1,6 @@
 ---
 title: "ThermogramBaseline Demo"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{ThermogramBaseline Demo}
   %\VignetteEngine{knitr::rmarkdown}
@@ -26,29 +26,30 @@ library(ThermogramBaseline)
 data(UrineWorking, package = "ThermogramBaseline")
 head(UrineWorking)
 ```
+
 ```{r echo=FALSE}
 kable(head(UrineWorking))
 ```
-
 
 Each function can only take in one thermogram sample at a time so we must filter for sample 1a and filter between the temperatures 45-90
 
 ```{r}
 SampleIDs <- UrineWorking %>% pull(SampleID) %>% unique() %>% as.vector()
 
-Sample.1 <- UrineWorking %>% filter(SampleID == SampleIDs[1]) %>% filter(between(Temperature, 45,90))
+Sample.1 <- UrineWorking %>% filter(SampleID == SampleIDs[1]) %>% 
+  filter(between(Temperature, 45,90))
 ```
 
 Now that we have our first sample, lets get our two endpoints for baseline detection.
 
-```{r, cache=TRUE}
+```{r cache=TRUE}
 endpoints <- endpoint.detection(x = Sample.1, w = 90, exclusion.lwr = 60, 
                                 exclusion.upr = 80, point.selection = "innermost")
 ```
+
 ```{r echo=FALSE}
 kable(endpoints)
 ```
-
 
 The model selected the temperatures 53.24153 and 84.63846 as our endpoints for our baseline subtraction. Next lets subtract the baseline using these endpoints.
 
@@ -58,20 +59,20 @@ baseline <- baseline.subtraction.byhand(x= Sample.1, lwr.temp = endpoints$lower,
 
 ```
 
-Now that we have subtracted the baseline, we will interpolate the data onto a grid of set temperatures. Notice plot.on is true by 
+Now that we have subtracted the baseline, we will interpolate the data onto a grid of set temperatures. Notice plot.on is true by
 
 ```{r}
 final <- final.sample.interpolate(x=baseline,grid.temp = seq(from = 45,to = 90,by = 0.1))
 ```
 
-Here we have our final baseline subtracted interpolated sample. We can also use the auto function to complete these in one step. Notice that the plot.on default is false so we must set it to true if we want graphs to appear. 
+Here we have our final baseline subtracted interpolated sample. We can also use the auto function to complete these in one step. Notice that the plot.on default is false so we must set it to true if we want graphs to appear.
 
 ```{r, cache=TRUE}
 auto <- auto.baseline(x=Sample.1, w=90, exclusion.lwr = 60, exclusion.upr = 80, 
                       grid.temp = seq(45,90,0.1),plot.on = TRUE)
 ```
 
-Lastly, lets run all 781 thermograms through our function and graph the end product. 
+Lastly, lets run all 781 thermograms through our function and graph the end product. This code might take a while to process.
 
 ```{r, eval=FALSE}
 ### Set our grid of temperatures to interpolate onto
@@ -122,15 +123,3 @@ pdf('/Final.Results.pdf')
 }
 dev.off()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
