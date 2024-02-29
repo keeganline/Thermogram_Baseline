@@ -15,8 +15,4 @@ Depends:
     dplyr,
     ggplot2
 LazyData: true
-Imports: tidyr
-Suggests: 
-    knitr,
-    rmarkdown
 VignetteBuilder: knitr
