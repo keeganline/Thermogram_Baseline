@@ -15,5 +15,5 @@ Depends:
 LazyData: true
 VignetteBuilder: knitr
 Imports: 
-    dplyr,
+    dplyr (>= 1.1.2),
     ggplot2
