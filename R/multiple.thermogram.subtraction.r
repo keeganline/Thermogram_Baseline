@@ -45,5 +45,5 @@ multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion
   if(file.on == TRUE){
     write.csv(Final.Results)
   }
-
+ return(Final.Results)
 }
