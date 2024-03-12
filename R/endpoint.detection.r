@@ -26,6 +26,11 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
     k <- round(w/2)
   }
 
+  try(if(min(x$temperature) > exclusion.lwr) stop("Exclusion zone is too low"))
+  try(if(max(x$temperature) < exclusion.upr) stop("Exclusion zone is too high"))
+  try(if(nrow(x %>% filter(Temperature < exclusion.lwr)) < w) stop("Not enough points. Need to lower W"))
+  try(if(nrow(x %>% filter(Temperature > exclusion.upr)) < w) stop("Not enough points. Need to lower W"))
+
   ### fit a CV spline
   full.spline.fit <- smooth.spline(x$Temperature, x$dCp, cv=TRUE)
   ### spline residuals into a data.frame with ids for tracking.
