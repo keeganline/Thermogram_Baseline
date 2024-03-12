@@ -7,7 +7,7 @@
 #' @param plot.on logical: should the output be graphed?
 #' @return Data frame of temperature and dCp
 #' @export
-multiple.thermogram.subtraction <- function(x,exclusion.lwr = 60, exclusion.upr = 80,
+multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion.upr = 80,
                                             grid.temp = seq(45, 90, 0.1), plot.on = FALSE,
                                             point = "outmost", explicit = TRUE)
 {
@@ -32,8 +32,9 @@ multiple.thermogram.subtraction <- function(x,exclusion.lwr = 60, exclusion.upr 
       filter(SampleID == SampleIDs[j]) %>%
       select(Temperature, dCp)
     ### get a baseline-subtracted and interpolated final result!
-    auto.output <- auto.baseline(x = working.sample,exclusion.lwr = exclusion.lwr,exclusion.upr = exclusion.upr,
-                                 plot.on = FALSE, point = point, grid.temp = grid.temp, explicit = explicit)
+    auto.output <- auto.baseline(x = working.sample, w=w, exclusion.lwr = exclusion.lwr,
+                                 exclusion.upr = exclusion.upr,plot.on = FALSE,
+                                 point = point, grid.temp = grid.temp, explicit = explicit)
     Final.Results <- Final.Results %>% cbind(out = auto.output$dCp)
     if(explicit == TRUE){
       cat("\014")
