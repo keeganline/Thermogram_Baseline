@@ -6,12 +6,14 @@
 \usage{
 multiple.thermogram.subtraction(
   x,
+  w = 90,
   exclusion.lwr = 60,
   exclusion.upr = 80,
   grid.temp = seq(45, 90, 0.1),
   plot.on = FALSE,
   point = "outmost",
-  explicit = TRUE
+  explicit = TRUE,
+  file.on = FALSE
 )
 }
 \arguments{

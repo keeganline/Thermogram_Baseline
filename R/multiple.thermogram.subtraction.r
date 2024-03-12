@@ -9,7 +9,7 @@
 #' @export
 multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion.upr = 80,
                                             grid.temp = seq(45, 90, 0.1), plot.on = FALSE,
-                                            point = "outmost", explicit = TRUE)
+                                            point = "outmost", explicit = TRUE, file.on = FALSE)
 {
   require(tidyverse, quietly = TRUE)
   ### Isolate unique sample IDs
@@ -40,6 +40,10 @@ multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion
       cat("\014")
     }
   }
+  colnames(Final.Results)[-1] <- SampleIDs
 
+  if(file.on == TRUE){
+    write.csv(Final.Results)
+  }
 
 }
