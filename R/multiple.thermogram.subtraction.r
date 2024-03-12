@@ -43,7 +43,7 @@ multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion
   colnames(Final.Results)[-1] <- SampleIDs
 
   if(file.on == TRUE){
-    write.csv(Final.Results)
+    write.csv(Final.Results,file="Final.Thermogram.Data.csv")
   }
  return(Final.Results)
 }
