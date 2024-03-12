@@ -8,22 +8,21 @@
 #' @param exclusion.upr The upper bound of the exclusion window
 #' @param grid.temp The set of temperatures to interpolate onto
 #' @param plot.on logical: Should graphs be produced?
-#' @param point he method of selecting the endpoint. Options are "innermost", "outmost", "mid"
+#' @param point The method of selecting the endpoint. Options are "innermost", "outmost", "mid"
 #' @return Data frame with temperature and dCp of baseline subtracted and interpolated sample
 #' @export
 auto.baseline <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80,
                           grid.temp = seq(45, 90, 0.1), plot.on = FALSE,
-                          point = "outmost")
+                          point = "outmost", explicit = FALSE)
 {
   ### automate selection of endpoints
-  require(dplyr, quietly = TRUE)
-  require(ggplot2,quietly = TRUE)
+  require(tidyverse, quietly = TRUE)
   endpoints <- endpoint.detection(
     x = x,
     w = w,
     exclusion.lwr = exclusion.lwr,
     exclusion.upr = exclusion.upr,
-    point.selection = point)
+    point.selection = point, explicit = explicit)
   ### baseline subtraction with auto-selected upr/lwr points
   baseline.output <- baseline.subtraction.byhand(
     x = x,

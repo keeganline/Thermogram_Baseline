@@ -13,10 +13,9 @@
 #' @param point.selection The method of selecting the endpoint. Options are "innermost", "outmost", "mid".
 #' @return Data frame containing the two endpoints for selection and method of selection
 #' @export
-endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "outmost")
+endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "outmost", explicit = TRUE)
 {
-  require(ggplot2,quietly = TRUE)
-  require(dplyr,quietly = TRUE)
+  require(tidyverse,quietly = TRUE)
   if(point.selection == "outmost"){
     k <- w
   }
@@ -35,7 +34,9 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
                      r=r,
                      id = 1:length(x$Temperature))
   ### scan through lower region calculating variance within a window size of w
-  cat('Scanning Lower. \n')
+  if(explicit == TRUE){
+    cat('Scanning Lower. \n')
+  }
   i=0
   df.var <- data.frame()
   ### how far do we need to scan?
@@ -51,7 +52,9 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
   lower <- x$Temperature[low$temp.stop-k+1]
 
   ### total size of thermogram
-  cat('Scanning Upper. \n')
+  if(explicit == TRUE){
+    cat('Scanning Upper. \n')
+  }
   l <- length(x$Temperature)
   j=0
   df.var.upper <- data.frame()

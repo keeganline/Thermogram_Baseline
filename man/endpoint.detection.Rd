@@ -9,7 +9,8 @@ endpoint.detection(
   w = 90,
   exclusion.lwr = 60,
   exclusion.upr = 80,
-  point.selection = "outmost"
+  point.selection = "outmost",
+  explicit = TRUE
 )
 }
 \arguments{

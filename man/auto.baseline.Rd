@@ -11,7 +11,8 @@ auto.baseline(
   exclusion.upr = 80,
   grid.temp = seq(45, 90, 0.1),
   plot.on = FALSE,
-  point = "outmost"
+  point = "outmost",
+  explicit = FALSE
 )
 }
 \arguments{
@@ -27,7 +28,7 @@ auto.baseline(
 
 \item{plot.on}{logical: Should graphs be produced?}
 
-\item{point}{he method of selecting the endpoint. Options are "innermost", "outmost", "mid"}
+\item{point}{The method of selecting the endpoint. Options are "innermost", "outmost", "mid"}
 }
 \value{
 Data frame with temperature and dCp of baseline subtracted and interpolated sample
