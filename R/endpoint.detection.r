@@ -26,8 +26,8 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
     k <- round(w/2)
   }
 
-  try(if(min(x$temperature) > exclusion.lwr) stop("Exclusion zone is too low"))
-  try(if(max(x$temperature) < exclusion.upr) stop("Exclusion zone is too high"))
+  try(if(min(x$Temperature) > exclusion.lwr) stop("Exclusion zone is too low"))
+  try(if(max(x$Temperature) < exclusion.upr) stop("Exclusion zone is too high"))
   try(if(nrow(x %>% filter(Temperature < exclusion.lwr)) < w) stop("Not enough points. Need to lower W"))
   try(if(nrow(x %>% filter(Temperature > exclusion.upr)) < w) stop("Not enough points. Need to lower W"))
 
