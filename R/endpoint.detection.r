@@ -11,6 +11,7 @@
 #' @param exclusion.lwr The lower bound of the exclusion window
 #' @param exclusion.upr The upper bound of the exclusion window
 #' @param point.selection The method of selecting the endpoint. Options are "innermost", "outmost", "mid".
+#' @param explicit logical: Should text be displayed as the function runs
 #' @return Data frame containing the two endpoints for selection and method of selection
 #' @export
 endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "outmost", explicit = TRUE)

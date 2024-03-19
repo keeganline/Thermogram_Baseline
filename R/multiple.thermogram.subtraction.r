@@ -1,10 +1,16 @@
-#' Intepolates multiple thermograms
+#' Interpolates multiple thermograms
 #'
 #' Fits a spline to the baseline subtracted data and interpolates the thermogram on the given temperature grid.
 #'
 #' @param x Data frame of raw thermogram data. Must be filtered to desired grid beforehand
+#' @param w The number of points in the window
+#' @param exclusion.lwr The lower bound of the exclusion window
+#' @param exclusion.upr The upper bound of the exclusion window
 #' @param grid.temp The grid of temperatures the samples are interpolated onto
 #' @param plot.on logical: should the output be graphed?
+#' @param point The method of selecting the endpoint. Options are "innermost", "outmost", "mid".
+#' @param explicit logical: Should text be displayed as the function runs
+#' @param file.on logical: Should a csv file be saved of the output
 #' @return Data frame of temperature and dCp
 #' @export
 multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion.upr = 80,
@@ -33,7 +39,7 @@ multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion
       select(Temperature, dCp)
     ### get a baseline-subtracted and interpolated final result!
     auto.output <- auto.baseline(x = working.sample, w=w, exclusion.lwr = exclusion.lwr,
-                                 exclusion.upr = exclusion.upr,plot.on = FALSE,
+                                 exclusion.upr = exclusion.upr,plot.on = plot.on,
                                  point = point, grid.temp = grid.temp, explicit = explicit)
     Final.Results <- Final.Results %>% cbind(out = auto.output$dCp)
     if(explicit == TRUE){
