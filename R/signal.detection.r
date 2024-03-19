@@ -14,6 +14,6 @@ signal.detection <- function(sample){
   out <- auto.arima(diff.sample)$model$Delta
   detection <- ifelse(length(out)==0, 'No Signal', 'Signal')
 
-  result <- data.frame(Signal = detection)
+  result <- data.frame(result = detection)
   return(result)
 }
