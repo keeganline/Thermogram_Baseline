@@ -6,6 +6,8 @@
 #' @return Data frame with result of signal or no signal
 #' @export
 signal.detection <- function(sample){
+  require(tidyverse, quietly = TRUE)
+  require(forecast, quietly = TRUE)
   working.sample <- sample %>% select(Temperature, dCp)
   diff.sample <- diff(working.sample$dCp)
 
