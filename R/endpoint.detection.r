@@ -29,8 +29,8 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
 
   try(if(min(x$Temperature) > exclusion.lwr) stop("Exclusion zone is too low"))
   try(if(max(x$Temperature) < exclusion.upr) stop("Exclusion zone is too high"))
-  try(if(nrow(x %>% filter(Temperature < exclusion.lwr)) < w) stop("Not enough points. Need to lower W"))
-  try(if(nrow(x %>% filter(Temperature > exclusion.upr)) < w) stop("Not enough points. Need to lower W"))
+  try(if(nrow(x %>% filter(Temperature < exclusion.lwr)) < w) stop("Not enough points. Need to lower w"))
+  try(if(nrow(x %>% filter(Temperature > exclusion.upr)) < w) stop("Not enough points. Need to lower w"))
 
   ### fit a CV spline
   full.spline.fit <- smooth.spline(x$Temperature, x$dCp, cv=TRUE)
@@ -58,9 +58,9 @@ endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80
   lower <- x$Temperature[low$temp.stop-k+1]
 
   ### total size of thermogram
-  if(explicit == TRUE){
-    cat('Scanning Upper. \n')
-  }
+    if(explicit == TRUE){
+      cat('Scanning Upper. \n')
+    }
   l <- length(x$Temperature)
   j=0
   df.var.upper <- data.frame()

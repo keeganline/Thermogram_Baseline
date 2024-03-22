@@ -14,7 +14,7 @@
 #' @return Data frame of temperature and dCp
 #' @export
 multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion.upr = 80,
-                                            grid.temp = seq(45, 90, 0.1), plot.on = FALSE,
+                                            grid.temp = seq(45, 90, 0.1),
                                             point = "outmost", explicit = TRUE, file.on = FALSE)
 {
   require(tidyverse, quietly = TRUE)
@@ -39,7 +39,7 @@ multiple.thermogram.subtraction <- function(x,w=90,exclusion.lwr = 60, exclusion
       select(Temperature, dCp)
     ### get a baseline-subtracted and interpolated final result!
     auto.output <- auto.baseline(x = working.sample, w=w, exclusion.lwr = exclusion.lwr,
-                                 exclusion.upr = exclusion.upr,plot.on = plot.on,
+                                 exclusion.upr = exclusion.upr,plot.on = FALSE,
                                  point = point, grid.temp = grid.temp, explicit = explicit)
     Final.Results <- Final.Results %>% cbind(out = auto.output$dCp)
     if(explicit == TRUE){

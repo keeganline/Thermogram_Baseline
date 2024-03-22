@@ -23,6 +23,8 @@ endpoint.detection(
 \item{exclusion.upr}{The upper bound of the exclusion window}
 
 \item{point.selection}{The method of selecting the endpoint. Options are "innermost", "outmost", "mid".}
+
+\item{explicit}{logical: Should text be displayed as the function runs}
 }
 \value{
 Data frame containing the two endpoints for selection and method of selection

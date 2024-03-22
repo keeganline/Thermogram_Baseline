@@ -2,7 +2,7 @@
 % Please edit documentation in R/multiple.thermogram.subtraction.r
 \name{multiple.thermogram.subtraction}
 \alias{multiple.thermogram.subtraction}
-\title{Intepolates multiple thermograms}
+\title{Interpolates multiple thermograms}
 \usage{
 multiple.thermogram.subtraction(
   x,
@@ -19,9 +19,21 @@ multiple.thermogram.subtraction(
 \arguments{
 \item{x}{Data frame of raw thermogram data. Must be filtered to desired grid beforehand}
 
+\item{w}{The number of points in the window}
+
+\item{exclusion.lwr}{The lower bound of the exclusion window}
+
+\item{exclusion.upr}{The upper bound of the exclusion window}
+
 \item{grid.temp}{The grid of temperatures the samples are interpolated onto}
 
 \item{plot.on}{logical: should the output be graphed?}
+
+\item{point}{The method of selecting the endpoint. Options are "innermost", "outmost", "mid".}
+
+\item{explicit}{logical: Should text be displayed as the function runs}
+
+\item{file.on}{logical: Should a csv file be saved of the output}
 }
 \value{
 Data frame of temperature and dCp
