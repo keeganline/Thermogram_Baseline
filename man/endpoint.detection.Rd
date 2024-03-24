@@ -9,14 +9,14 @@ endpoint.detection(
   w = 90,
   exclusion.lwr = 60,
   exclusion.upr = 80,
-  point.selection = "outmost",
+  point.selection = "innermost",
   explicit = TRUE
 )
 }
 \arguments{
 \item{x}{One thermogram sample}
 
-\item{w}{The number of points in the window}
+\item{w}{The number of points in the window. To find the lowest variance, "windows" of w points are selected from lowest temp to exclusion temp and the variance is calculated.}
 
 \item{exclusion.lwr}{The lower bound of the exclusion window}
 

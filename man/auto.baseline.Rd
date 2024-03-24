@@ -11,14 +11,14 @@ auto.baseline(
   exclusion.upr = 80,
   grid.temp = seq(45, 90, 0.1),
   plot.on = FALSE,
-  point = "outmost",
+  point = "innermost",
   explicit = FALSE
 )
 }
 \arguments{
 \item{x}{Raw thermogram data}
 
-\item{w}{The number of points in the endpoint selection window}
+\item{w}{The number of points in the endpoint selection window. The number of points in the window. To find the lowest variance, "windows" of w points are selected from lowest temp to exclusion temp and the variance is calculated.}
 
 \item{exclusion.lwr}{The lower bound of the exclusion window}
 
@@ -29,6 +29,8 @@ auto.baseline(
 \item{plot.on}{logical: Should graphs be produced?}
 
 \item{point}{The method of selecting the endpoint. Options are "innermost", "outmost", "mid"}
+
+\item{explicit}{logical: Should text be displayed as the function runs}
 }
 \value{
 Data frame with temperature and dCp of baseline subtracted and interpolated sample
