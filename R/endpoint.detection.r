@@ -14,7 +14,7 @@
 #' @param explicit logical: Should text be displayed as the function runs
 #' @return Data frame containing the two endpoints for selection and method of selection
 #' @export
-endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "outmost", explicit = TRUE)
+endpoint.detection <- function(x, w = 90, exclusion.lwr = 60, exclusion.upr = 80, point.selection = "innermost", explicit = TRUE)
 {
   require(tidyverse,quietly = TRUE)
   if(point.selection == "outmost"){
