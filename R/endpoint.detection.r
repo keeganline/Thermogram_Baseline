@@ -7,7 +7,7 @@
 #' Exclusion zone is set so that the main curve does not get selected as an endpoint. Typically it is set to 60-80 for urine thermograms and 48-82 for plasma thermograms
 #'
 #' @param x One thermogram sample
-#' @param w The number of points in the window
+#' @param w The number of points in the window. To find the lowest variance, "windows" of w points are selected from lowest temp to exclusion temp and the variance is calculated.
 #' @param exclusion.lwr The lower bound of the exclusion window
 #' @param exclusion.upr The upper bound of the exclusion window
 #' @param point.selection The method of selecting the endpoint. Options are "innermost", "outmost", "mid".
