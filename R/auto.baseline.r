@@ -3,7 +3,7 @@
 #' Automatically detects two endpoints for baseline subtraction, then preforms baseline subtraction and returns final sample interpolated on the given grid
 #'
 #' @param x Raw thermogram data
-#' @param w The number of points in the endpoint selection window
+#' @param w The number of points in the endpoint selection window. The number of points in the window. To find the lowest variance, "windows" of w points are selected from lowest temp to exclusion temp and the variance is calculated.
 #' @param exclusion.lwr The lower bound of the exclusion window
 #' @param exclusion.upr The upper bound of the exclusion window
 #' @param grid.temp The set of temperatures to interpolate onto
